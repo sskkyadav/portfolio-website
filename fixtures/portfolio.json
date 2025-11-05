@@ -1,0 +1,183 @@
+[
+{
+    "model": "portfolio.project",
+    "pk": 1,
+    "fields": {
+        "title": "E-Commerce Platform",
+        "description": "A full-featured e-commerce website with payment integration, inventory management, and admin dashboard. Built with Django and React.",
+        "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
+        "category": 1,
+        "tags": [
+            "Django",
+            "React",
+            "Stripe",
+            "PostgreSQL"
+        ],
+        "demo_url": "https://example.com/ecommerce-demo",
+        "github_url": "https://github.com/suresh/ecommerce-platform",
+        "created_at": "2025-11-03T12:55:04.881Z",
+        "updated_at": "2025-11-03T12:55:04.881Z"
+    }
+},
+{
+    "model": "portfolio.project",
+    "pk": 2,
+    "fields": {
+        "title": "Task Management System",
+        "description": "A comprehensive task management tool with team collaboration features, real-time updates, and project tracking.",
+        "image": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop",
+        "category": 2,
+        "tags": [
+            "Python",
+            "Django",
+            "WebSockets",
+            "Real-time"
+        ],
+        "demo_url": "https://example.com/task-manager-demo",
+        "github_url": "https://github.com/suresh/task-manager",
+        "created_at": "2025-11-03T12:55:04.888Z",
+        "updated_at": "2025-11-03T12:55:04.888Z"
+    }
+},
+{
+    "model": "portfolio.project",
+    "pk": 3,
+    "fields": {
+        "title": "Portfolio Website",
+        "description": "Modern, responsive portfolio website with animations, dark mode, and contact forms. Built with HTML5, CSS3, and JavaScript.",
+        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
+        "category": 1,
+        "tags": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "Bootstrap"
+        ],
+        "demo_url": "https://example.com/portfolio-demo",
+        "github_url": "https://github.com/suresh/portfolio-website",
+        "created_at": "2025-11-03T12:55:04.895Z",
+        "updated_at": "2025-11-03T12:55:04.895Z"
+    }
+},
+{
+    "model": "portfolio.project",
+    "pk": 4,
+    "fields": {
+        "title": "Inventory Management System",
+        "description": "Complete inventory tracking system with barcode scanning, reporting, and mobile app integration.",
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop",
+        "category": 2,
+        "tags": [
+            "Django",
+            "REST API",
+            "Mobile App",
+            "Analytics"
+        ],
+        "demo_url": "https://example.com/inventory-demo",
+        "github_url": "https://github.com/suresh/inventory-system",
+        "created_at": "2025-11-03T12:55:04.904Z",
+        "updated_at": "2025-11-03T12:55:04.904Z"
+    }
+},
+{
+    "model": "portfolio.project",
+    "pk": 5,
+    "fields": {
+        "title": "Blog Platform",
+        "description": "SEO-optimized blog with rich text editor, categories, social sharing, and comment system.",
+        "image": "https://images.unsplash.com/photo-1486312338219-ce68e2c6f44d?w=400&h=250&fit=crop",
+        "category": 1,
+        "tags": [
+            "Django",
+            "CKEditor",
+            "SEO",
+            "Responsive"
+        ],
+        "demo_url": "https://example.com/blog-demo",
+        "github_url": "https://github.com/suresh/blog-platform",
+        "created_at": "2025-11-03T12:55:04.914Z",
+        "updated_at": "2025-11-03T12:55:04.914Z"
+    }
+},
+{
+    "model": "portfolio.project",
+    "pk": 6,
+    "fields": {
+        "title": "Web Development Training Course",
+        "description": "Comprehensive online training program covering HTML, CSS, JavaScript, Django, and React with hands-on projects.",
+        "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop",
+        "category": 3,
+        "tags": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Django",
+            "React"
+        ],
+        "demo_url": "https://example.com/training-demo",
+        "github_url": "https://github.com/suresh/web-dev-course",
+        "created_at": "2025-11-03T12:55:04.923Z",
+        "updated_at": "2025-11-03T12:55:04.923Z"
+    }
+},
+{
+    "model": "portfolio.project",
+    "pk": 7,
+    "fields": {
+        "title": "AI Chatbot",
+        "description": "Intelligent chatbot with natural language processing, built with Python and machine learning libraries.",
+        "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop",
+        "category": 2,
+        "tags": [
+            "Python",
+            "AI",
+            "NLP",
+            "Machine Learning"
+        ],
+        "demo_url": "https://example.com/chatbot-demo",
+        "github_url": "https://github.com/suresh/ai-chatbot",
+        "created_at": "2025-11-03T12:55:04.932Z",
+        "updated_at": "2025-11-03T12:55:04.932Z"
+    }
+},
+{
+    "model": "portfolio.project",
+    "pk": 8,
+    "fields": {
+        "title": "Mobile App Development Course",
+        "description": "Complete mobile app development training with React Native, covering iOS and Android platforms.",
+        "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop",
+        "category": 3,
+        "tags": [
+            "React Native",
+            "iOS",
+            "Android",
+            "Mobile"
+        ],
+        "demo_url": "https://example.com/mobile-course-demo",
+        "github_url": "https://github.com/suresh/mobile-dev-course",
+        "created_at": "2025-11-03T12:55:04.943Z",
+        "updated_at": "2025-11-03T12:55:04.943Z"
+    }
+},
+{
+    "model": "portfolio.project",
+    "pk": 9,
+    "fields": {
+        "title": "Data Analytics Dashboard",
+        "description": "Interactive dashboard for data visualization and analytics with real-time charts and reports.",
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop",
+        "category": 2,
+        "tags": [
+            "Python",
+            "Pandas",
+            "Chart.js",
+            "Dashboard"
+        ],
+        "demo_url": "https://example.com/analytics-demo",
+        "github_url": "https://github.com/suresh/data-dashboard",
+        "created_at": "2025-11-03T12:55:04.952Z",
+        "updated_at": "2025-11-03T12:55:04.952Z"
+    }
+}
+]

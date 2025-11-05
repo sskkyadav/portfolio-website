@@ -1,0 +1,93 @@
+[
+{
+    "model": "testimonials.testimonial",
+    "pk": 1,
+    "fields": {
+        "name": "Rajesh Sharma",
+        "designation": "CEO, Tech Solutions Inc.",
+        "message": "Suresh transformed our business with a stunning e-commerce platform. His attention to detail, technical expertise, and ability to understand our vision was exceptional. The project was delivered on time and exceeded all our expectations. Highly recommended!",
+        "image": "",
+        "rating": 5,
+        "is_active": true,
+        "created_at": "2025-11-05T02:58:22.126Z"
+    }
+},
+{
+    "model": "testimonials.testimonial",
+    "pk": 2,
+    "fields": {
+        "name": "Priya Patel",
+        "designation": "Web Developer, StartupXYZ",
+        "message": "As someone completely new to programming, I was nervous about starting my journey. Suresh's training program was perfect for beginners. His patient teaching style, practical examples, and constant support helped me land my first developer job within 6 months. The course content was comprehensive and up-to-date with industry standards.",
+        "image": "",
+        "rating": 5,
+        "is_active": true,
+        "created_at": "2025-11-05T02:58:22.133Z"
+    }
+},
+{
+    "model": "testimonials.testimonial",
+    "pk": 3,
+    "fields": {
+        "name": "Amit Kumar",
+        "designation": "CTO, Digital Innovations",
+        "message": "I hired Suresh to modernize our legacy web application. The results were outstanding. He not only updated the technology stack but also improved performance by 300%. His code is clean, well-documented, and maintainable. The ongoing support he provides gives us peace of mind. Worth every penny!",
+        "image": "",
+        "rating": 5,
+        "is_active": true,
+        "created_at": "2025-11-05T02:58:22.137Z"
+    }
+},
+{
+    "model": "testimonials.testimonial",
+    "pk": 4,
+    "fields": {
+        "name": "Sarah Johnson",
+        "designation": "Project Manager, Global Corp",
+        "message": "Working with Suresh was a game-changer for our digital transformation. His strategic thinking and technical skills helped us achieve our goals ahead of schedule. The quality of work and professionalism is unmatched.",
+        "image": "",
+        "rating": 4,
+        "is_active": true,
+        "created_at": "2025-11-05T02:58:22.142Z"
+    }
+},
+{
+    "model": "testimonials.testimonial",
+    "pk": 5,
+    "fields": {
+        "name": "Rajesh Sharma",
+        "designation": "E-commerce Entrepreneur",
+        "message": "Suresh transformed our online store completely. The new platform increased our sales by 150% in just 3 months. His expertise in Django and modern web technologies is unmatched.",
+        "image": "",
+        "rating": 5,
+        "is_active": true,
+        "created_at": "2025-11-05T10:52:38.742Z"
+    }
+},
+{
+    "model": "testimonials.testimonial",
+    "pk": 6,
+    "fields": {
+        "name": "Priya Patel",
+        "designation": "Software Developer Student",
+        "message": "Suresh is an amazing teacher! His training program took me from zero knowledge to landing my first developer job in 6 months. The practical approach and real-world projects made all the difference.",
+        "image": "",
+        "rating": 5,
+        "is_active": true,
+        "created_at": "2025-11-05T10:52:38.750Z"
+    }
+},
+{
+    "model": "testimonials.testimonial",
+    "pk": 7,
+    "fields": {
+        "name": "Amit Kumar",
+        "designation": "Business Owner",
+        "message": "Working with Suresh was a game-changer for our company. He modernized our legacy system, improved performance by 300%, and provided excellent ongoing support. Highly recommended!",
+        "image": "",
+        "rating": 5,
+        "is_active": true,
+        "created_at": "2025-11-05T10:52:38.756Z"
+    }
+}
+]

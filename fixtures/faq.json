@@ -1,0 +1,106 @@
+[
+{
+    "model": "faq.faq",
+    "pk": 1,
+    "fields": {
+        "question": "What services do you offer?",
+        "answer": "I offer web development services including full-stack development, Django applications, React frontend development, API development, and custom software solutions.",
+        "category": "services",
+        "additional_info": null,
+        "is_active": true,
+        "order": 0,
+        "created_at": "2025-11-05T11:49:24.202Z"
+    }
+},
+{
+    "model": "faq.faq",
+    "pk": 2,
+    "fields": {
+        "question": "How long does a typical project take?",
+        "answer": "Project timelines vary based on complexity. Simple websites take 2-4 weeks, complex applications can take 2-6 months. I provide detailed timelines during project planning.",
+        "category": "services",
+        "additional_info": null,
+        "is_active": true,
+        "order": 0,
+        "created_at": "2025-11-05T11:49:24.208Z"
+    }
+},
+{
+    "model": "faq.faq",
+    "pk": 3,
+    "fields": {
+        "question": "Do you provide training programs?",
+        "answer": "Yes, I offer comprehensive training in Python, Django, React, JavaScript, and full-stack web development. Programs include hands-on projects and certification.",
+        "category": "training",
+        "additional_info": null,
+        "is_active": true,
+        "order": 0,
+        "created_at": "2025-11-05T11:49:24.213Z"
+    }
+},
+{
+    "model": "faq.faq",
+    "pk": 4,
+    "fields": {
+        "question": "What is your training methodology?",
+        "answer": "My training combines theoretical concepts with practical projects. Each course includes video lectures, coding exercises, real-world projects, and ongoing support.",
+        "category": "training",
+        "additional_info": null,
+        "is_active": true,
+        "order": 0,
+        "created_at": "2025-11-05T11:49:24.218Z"
+    }
+},
+{
+    "model": "faq.faq",
+    "pk": 5,
+    "fields": {
+        "question": "Which technologies do you work with?",
+        "answer": "I specialize in Python, Django, React, JavaScript, HTML/CSS, PostgreSQL, MongoDB, and various cloud platforms like AWS and Heroku.",
+        "category": "technical",
+        "additional_info": null,
+        "is_active": true,
+        "order": 0,
+        "created_at": "2025-11-05T11:49:24.223Z"
+    }
+},
+{
+    "model": "faq.faq",
+    "pk": 6,
+    "fields": {
+        "question": "Do you provide ongoing maintenance?",
+        "answer": "Yes, I offer maintenance packages for bug fixes, updates, security patches, and performance optimization after project completion.",
+        "category": "technical",
+        "additional_info": null,
+        "is_active": true,
+        "order": 0,
+        "created_at": "2025-11-05T11:49:24.228Z"
+    }
+},
+{
+    "model": "faq.faq",
+    "pk": 7,
+    "fields": {
+        "question": "What is your pricing structure?",
+        "answer": "Pricing depends on project scope. I offer fixed-price quotes for defined projects and hourly rates for ongoing work. Contact me for a custom quote.",
+        "category": "pricing",
+        "additional_info": null,
+        "is_active": true,
+        "order": 0,
+        "created_at": "2025-11-05T11:49:24.233Z"
+    }
+},
+{
+    "model": "faq.faq",
+    "pk": 8,
+    "fields": {
+        "question": "What are your payment terms?",
+        "answer": "I typically require 50% upfront payment and 50% upon completion. For larger projects, we can arrange milestone-based payments.",
+        "category": "pricing",
+        "additional_info": null,
+        "is_active": true,
+        "order": 0,
+        "created_at": "2025-11-05T11:49:24.238Z"
+    }
+}
+]

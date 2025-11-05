@@ -1,0 +1,56 @@
+[
+{
+    "model": "services.service",
+    "pk": 1,
+    "fields": {
+        "title": "Web Design & Development",
+        "description": "Custom websites using Django, React, HTML5, CSS3, and JS. Responsive, SEO-optimized, and user-friendly designs.",
+        "icon": "fas fa-code",
+        "process_steps": [
+            "Requirement Gathering",
+            "UI/UX Design",
+            "Frontend Development",
+            "Backend Development",
+            "Testing & Deployment"
+        ],
+        "created_at": "2025-11-03T12:53:51.099Z",
+        "updated_at": "2025-11-03T12:53:51.099Z"
+    }
+},
+{
+    "model": "services.service",
+    "pk": 2,
+    "fields": {
+        "title": "Custom Tool & Software Design",
+        "description": "Process: requirement gathering  UI/UX  backend  testing  deployment. Tailored software solutions for your business needs.",
+        "icon": "fas fa-tools",
+        "process_steps": [
+            "Requirement Analysis",
+            "System Design",
+            "Development",
+            "Quality Assurance",
+            "Deployment & Support"
+        ],
+        "created_at": "2025-11-03T12:53:51.111Z",
+        "updated_at": "2025-11-03T12:53:51.111Z"
+    }
+},
+{
+    "model": "services.service",
+    "pk": 3,
+    "fields": {
+        "title": "Online IT Training Programs",
+        "description": "Courses in Programming, Web Development, Ethical Hacking, AI & ML basics. Hands-on learning with real-world projects.",
+        "icon": "fas fa-graduation-cap",
+        "process_steps": [
+            "Course Planning",
+            "Content Creation",
+            "Interactive Sessions",
+            "Practical Assignments",
+            "Certification"
+        ],
+        "created_at": "2025-11-03T12:53:51.117Z",
+        "updated_at": "2025-11-03T12:53:51.117Z"
+    }
+}
+]

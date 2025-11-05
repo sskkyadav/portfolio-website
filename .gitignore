@@ -10,9 +10,12 @@ venv/
 *.log
 *.pot
 *.pyc
-db.sqlite3
 media/
 staticfiles/
+
+# Keep these files
+!fixtures/
+!fixtures/*.json
 
 # VS Code
 .vscode/
