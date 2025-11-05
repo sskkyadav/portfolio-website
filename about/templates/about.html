@@ -1,0 +1,384 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About - Suresh Kumar Yadav{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">About Me</h1>
+            <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+                Get to know the person behind the code and the passion for teaching technology.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- About Content -->
+<section class="py-16 bg-white dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Image -->
+            <div data-aos="fade-right">
+                <img src="{% static 'images/suresh1.jpg' %}" alt="Suresh Kumar Yadav" class="w-full h-96 object-cover rounded-lg shadow-lg">
+            </div>
+
+            <!-- Content -->
+            <div data-aos="fade-left">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Hello, I'm Suresh Kumar Yadav</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                    I'm a passionate IT Trainer and Web Developer with over 5 years of experience in the technology industry.
+                    My journey began with a fascination for how websites work, and it has evolved into a career dedicated to
+                    both creating innovative web solutions and sharing knowledge with aspiring developers.
+                </p>
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                    As an educator, I believe in making complex concepts accessible and enjoyable. My training programs
+                    are designed to provide hands-on experience and real-world skills that students can immediately apply
+                    in their careers. Whether you're a beginner taking your first steps into programming or an experienced
+                    developer looking to expand your skills, I provide personalized guidance and mentorship.
+                </p>
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                    When I'm not coding or teaching, you can find me exploring new technologies, contributing to open-source
+                    projects, or sharing insights through my blog. I'm always excited to take on new challenges and help
+                    others achieve their goals in the world of technology.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="{% url 'contact' %}" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>Get In Touch
+                    </a>
+                    <a href="https://www.linkedin.com/in/suresh-kumar-yadav-5b61092a6" target="_blank" class="border-2 border-blue-600 text-blue-600 dark:text-blue-400 px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin mr-2"></i>LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience & Education -->
+<section class="py-16 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Experience -->
+            <div data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Experience</h2>
+                <div class="space-y-6">
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-code text-white"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Senior Web Developer</h3>
+                                <p class="text-blue-600 dark:text-blue-400 font-medium">Tech Solutions Inc.</p>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">2020 - Present</p>
+                                <p class="text-gray-600 dark:text-gray-300">
+                                    Led development of complex web applications using Django and React.
+                                    Mentored junior developers and implemented best practices.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-graduation-cap text-white"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">IT Trainer</h3>
+                                <p class="text-green-600 dark:text-green-400 font-medium">Code Academy</p>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">2019 - Present</p>
+                                <p class="text-gray-600 dark:text-gray-300">
+                                    Conducted training programs in web development, Python, and data science.
+                                    Trained over 200 students with 95% job placement rate.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-briefcase text-white"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Full Stack Developer</h3>
+                                <p class="text-purple-600 dark:text-purple-400 font-medium">Digital Innovations</p>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">2018 - 2020</p>
+                                <p class="text-gray-600 dark:text-gray-300">
+                                    Developed and maintained multiple client websites and web applications.
+                                    Collaborated with design teams to implement responsive interfaces.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div data-aos="fade-up" data-aos-delay="200">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Education</h2>
+                <div class="space-y-6">
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-university text-white"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Master of Computer Applications</h3>
+                                <p class="text-indigo-600 dark:text-indigo-400 font-medium">ABC University</p>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">2016 - 2018</p>
+                                <p class="text-gray-600 dark:text-gray-300">
+                                    Specialized in software development and web technologies.
+                                    Graduated with distinction and received best project award.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-certificate text-white"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Certified Python Developer</h3>
+                                <p class="text-teal-600 dark:text-teal-400 font-medium">Python Institute</p>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">2019</p>
+                                <p class="text-gray-600 dark:text-gray-300">
+                                    Advanced Python programming certification with focus on web development frameworks.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-award text-white"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">AWS Certified Developer</h3>
+                                <p class="text-orange-600 dark:text-orange-400 font-medium">Amazon Web Services</p>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">2020</p>
+                                <p class="text-gray-600 dark:text-gray-300">
+                                    Certified in AWS cloud services and deployment strategies for web applications.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section class="py-16 bg-white dark:bg-gray-800" id="skills">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">My Skills</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Technologies and tools I work with to bring your ideas to life.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Programming Languages -->
+            <div data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-6">Programming Languages</h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 dark:text-gray-300">Python</span>
+                            <span class="text-gray-700 dark:text-gray-300">95%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="skill-bar bg-blue-600 h-2 rounded-full" style="--skill-level: 95%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 dark:text-gray-300">JavaScript</span>
+                            <span class="text-gray-700 dark:text-gray-300">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="skill-bar bg-yellow-500 h-2 rounded-full" style="--skill-level: 90%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 dark:text-gray-300">HTML/CSS</span>
+                            <span class="text-gray-700 dark:text-gray-300">95%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="skill-bar bg-red-500 h-2 rounded-full" style="--skill-level: 95%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frameworks & Libraries -->
+            <div data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-6">Frameworks & Libraries</h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 dark:text-gray-300">Django</span>
+                            <span class="text-gray-700 dark:text-gray-300">95%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="skill-bar bg-green-600 h-2 rounded-full" style="--skill-level: 95%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 dark:text-gray-300">React</span>
+                            <span class="text-gray-700 dark:text-gray-300">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="skill-bar bg-blue-400 h-2 rounded-full" style="--skill-level: 85%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 dark:text-gray-300">Node.js</span>
+                            <span class="text-gray-700 dark:text-gray-300">80%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="skill-bar bg-green-500 h-2 rounded-full" style="--skill-level: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools & Technologies -->
+            <div data-aos="fade-up" data-aos-delay="300">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-6">Tools & Technologies</h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 dark:text-gray-300">Git & GitHub</span>
+                            <span class="text-gray-700 dark:text-gray-300">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="skill-bar bg-gray-800 h-2 rounded-full" style="--skill-level: 90%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 dark:text-gray-300">Docker</span>
+                            <span class="text-gray-700 dark:text-gray-300">75%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="skill-bar bg-blue-600 h-2 rounded-full" style="--skill-level: 75%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-gray-700 dark:text-gray-300">AWS</span>
+                            <span class="text-gray-700 dark:text-gray-300">80%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="skill-bar bg-orange-500 h-2 rounded-full" style="--skill-level: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skill Icons -->
+        <div class="mt-12" data-aos="fade-up">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-6 text-center">Technologies I Work With</h3>
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="text-center">
+                    <i class="fab fa-python text-4xl text-blue-600 mb-2"></i>
+                    <p class="text-gray-600 dark:text-gray-300">Python</p>
+                </div>
+                <div class="text-center">
+                    <i class="fab fa-js-square text-4xl text-yellow-500 mb-2"></i>
+                    <p class="text-gray-600 dark:text-gray-300">JavaScript</p>
+                </div>
+                <div class="text-center">
+                    <i class="fab fa-react text-4xl text-blue-400 mb-2"></i>
+                    <p class="text-gray-600 dark:text-gray-300">React</p>
+                </div>
+                <div class="text-center">
+                    <i class="fab fa-node-js text-4xl text-green-600 mb-2"></i>
+                    <p class="text-gray-600 dark:text-gray-300">Node.js</p>
+                </div>
+                <div class="text-center">
+                    <i class="fab fa-html5 text-4xl text-red-500 mb-2"></i>
+                    <p class="text-gray-600 dark:text-gray-300">HTML5</p>
+                </div>
+                <div class="text-center">
+                    <i class="fab fa-css3-alt text-4xl text-blue-600 mb-2"></i>
+                    <p class="text-gray-600 dark:text-gray-300">CSS3</p>
+                </div>
+                <div class="text-center">
+                    <i class="fab fa-docker text-4xl text-blue-600 mb-2"></i>
+                    <p class="text-gray-600 dark:text-gray-300">Docker</p>
+                </div>
+                <div class="text-center">
+                    <i class="fab fa-aws text-4xl text-orange-500 mb-2"></i>
+                    <p class="text-gray-600 dark:text-gray-300">AWS</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Achievements -->
+<section class="py-16 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Achievements & Recognition</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Milestones and recognition that highlight my journey in technology.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-trophy text-4xl text-yellow-500 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">200+</h3>
+                <p class="text-gray-600 dark:text-gray-300">Students Trained</p>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-project-diagram text-4xl text-blue-500 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">50+</h3>
+                <p class="text-gray-600 dark:text-gray-300">Projects Completed</p>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-users text-4xl text-green-500 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">15+</h3>
+                <p class="text-gray-600 dark:text-gray-300">Happy Clients</p>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-star text-4xl text-purple-500 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">4.9/5</h3>
+                <p class="text-gray-600 dark:text-gray-300">Average Rating</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

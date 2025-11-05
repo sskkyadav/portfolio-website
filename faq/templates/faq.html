@@ -1,0 +1,311 @@
+{% extends 'base.html' %}
+
+{% block title %}FAQ - Suresh Kumar Yadav{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Frequently Asked Questions</h1>
+            <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+                Find answers to common questions about my services, training programs, and working with me.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Search FAQ -->
+<section class="py-8 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center" data-aos="fade-up">
+            <div class="max-w-md mx-auto">
+                <input type="text" id="faq-search" placeholder="Search FAQs..." class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Type keywords like "training", "project", "payment", etc.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Categories -->
+<section class="py-8 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up">
+            <button class="category-btn active bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition-colors" data-category="all">
+                All Questions
+            </button>
+            <button class="category-btn bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-full font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" data-category="services">
+                Services
+            </button>
+            <button class="category-btn bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-full font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" data-category="training">
+                Training
+            </button>
+            <button class="category-btn bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-full font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" data-category="technical">
+                Technical
+            </button>
+            <button class="category-btn bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-full font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" data-category="pricing">
+                Pricing
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Accordion -->
+<section class="py-16 bg-white dark:bg-gray-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="space-y-4" id="faq-container">
+            {% for faq in faqs %}
+            <div class="faq-item bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden" data-category="{{ faq.category }}">
+                <button class="faq-question w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg" data-faq-id="{{ faq.id }}">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white pr-4">{{ faq.question }}</h3>
+                        <i class="fas fa-chevron-down text-gray-500 dark:text-gray-400 transform transition-transform duration-200"></i>
+                    </div>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <div class="border-t border-gray-200 dark:border-gray-600 pt-4">
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">{{ faq.answer|safe }}</p>
+                        {% if faq.additional_info %}
+                        <div class="mt-4 p-4 bg-blue-50 dark:bg-blue-900 rounded-lg">
+                            <p class="text-blue-800 dark:text-blue-200 text-sm">{{ faq.additional_info }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- No results message -->
+        <div class="hidden text-center py-16" id="no-results">
+            <i class="fas fa-search text-6xl text-gray-300 dark:text-gray-600 mb-4"></i>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">No matching questions found</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
+                Try adjusting your search terms or browse all categories.
+            </p>
+            <button class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors" onclick="showAllFAQs()">
+                Show All FAQs
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="py-16 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Still Have Questions?</h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+            Can't find the answer you're looking for? I'm here to help!
+            Get in touch and I'll personally answer your questions.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'contact' %}" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors transform hover:scale-105">
+                <i class="fas fa-envelope mr-2"></i>Contact Me
+            </a>
+            <a href="https://wa.me/919352471227" target="_blank" class="bg-green-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-600 transition-colors transform hover:scale-105">
+                <i class="fab fa-whatsapp mr-2"></i>WhatsApp Chat
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Popular Topics -->
+<section class="py-16 bg-white dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Popular Topics</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Quick links to the most frequently asked questions.
+            </p>
+        </div>
+
+        <div id="popular-topics" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-clock text-3xl text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Project Timeline</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Learn about typical project durations and delivery schedules.</p>
+                <a href="#faq-container" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-semibold" onclick="scrollToCategory('services')">
+                    View Questions →
+                </a>
+            </div>
+
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-graduation-cap text-3xl text-green-600 mb-4"></i>
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Training Programs</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Details about course content, duration, and certification.</p>
+                <a href="#faq-container" class="text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 font-semibold" onclick="scrollToCategory('training')">
+                    View Questions →
+                </a>
+            </div>
+
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-code text-3xl text-purple-600 mb-4"></i>
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Technical Support</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Information about technologies, frameworks, and maintenance.</p>
+                <a href="#faq-container" class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 font-semibold" onclick="scrollToCategory('technical')">
+                    View Questions →
+                </a>
+            </div>
+
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-rupee-sign text-3xl text-orange-600 mb-4"></i>
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Pricing & Payment</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Payment terms, methods, and pricing structure details.</p>
+                <a href="#faq-container" class="text-orange-600 dark:text-orange-400 hover:text-orange-800 dark:hover:text-orange-300 font-semibold" onclick="scrollToCategory('pricing')">
+                    View Questions →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Signup -->
+<section class="py-16 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Stay Updated</h2>
+        <p class="text-lg md:text-xl mb-8 text-blue-100">
+            Get notified when I add new FAQs or publish answers to common questions.
+        </p>
+        <form id="newsletter-form" class="max-w-md mx-auto flex gap-4">
+            <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-white focus:outline-none">
+            <button type="submit" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                Subscribe
+            </button>
+        </form>
+        <p class="text-blue-200 text-sm mt-4">Join 500+ subscribers • No spam • Unsubscribe anytime</p>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // FAQ Accordion functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        const faqSearch = document.getElementById('faq-search');
+        const faqCategories = document.querySelectorAll('.category-btn');
+        const faqContainer = document.getElementById('faq-container');
+        const noResults = document.getElementById('no-results');
+
+        // Toggle FAQ answers
+        function toggleFAQ(faqId) {
+            const question = document.querySelector(`[data-faq-id="${faqId}"]`);
+            if (question) {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+
+                // Close all other answers
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    if (ans !== answer) {
+                        ans.classList.add('hidden');
+                        ans.previousElementSibling.querySelector('i').classList.remove('rotate-180');
+                    }
+                });
+
+                // Toggle current answer
+                answer.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            }
+        }
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', function() {
+                const faqId = this.getAttribute('data-faq-id');
+                toggleFAQ(faqId);
+            });
+        });
+
+        // Search functionality
+        faqSearch.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            let visibleCount = 0;
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('h3').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer p').textContent.toLowerCase();
+
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Show/hide no results message
+            if (visibleCount === 0 && searchTerm.length > 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        });
+
+        // Category filtering
+        function filterFAQ(category) {
+            // Update active category button
+            faqCategories.forEach(cat => {
+                cat.classList.remove('active', 'bg-blue-600', 'text-white');
+                cat.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+            });
+            const activeBtn = document.querySelector(`[data-category="${category}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active', 'bg-blue-600', 'text-white');
+                activeBtn.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+            }
+
+            // Filter FAQs
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const itemCategory = item.getAttribute('data-category');
+                if (category === 'all' || itemCategory === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Clear search
+            faqSearch.value = '';
+            noResults.classList.add('hidden');
+        }
+
+        faqCategories.forEach(category => {
+            category.addEventListener('click', function() {
+                const selectedCategory = this.getAttribute('data-category');
+                filterFAQ(selectedCategory);
+            });
+        });
+
+        // Newsletter form
+        const newsletterForm = document.querySelector('section.bg-gradient-to-r form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+
+                alert('Thank you for subscribing! You will receive updates at ' + email);
+                this.reset();
+            });
+        }
+    });
+
+    // Utility functions
+    function scrollToCategory(category) {
+        const categoryBtn = document.querySelector(`[data-category="${category}"]`);
+        if (categoryBtn) {
+            categoryBtn.click();
+            categoryBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
+    function showAllFAQs() {
+        const allBtn = document.querySelector('[data-category="all"]');
+        if (allBtn) {
+            allBtn.click();
+        }
+        document.getElementById('faq-search').value = '';
+        document.getElementById('no-results').classList.add('hidden');
+    }
+</script>
+{% endblock %}

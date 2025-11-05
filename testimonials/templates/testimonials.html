@@ -1,0 +1,291 @@
+{% extends 'base.html' %}
+
+{% block title %}Testimonials - Suresh Kumar Yadav{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Client Testimonials</h1>
+            <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+                What my clients and students say about working with me.
+                Real feedback from real people.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-16 bg-white dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2">4.9/5</div>
+                <p class="text-gray-600 dark:text-gray-300">Average Rating</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-3xl md:text-4xl font-bold text-green-600 mb-2">15+</div>
+                <p class="text-gray-600 dark:text-gray-300">Happy Clients</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                <div class="text-3xl md:text-4xl font-bold text-purple-600 mb-2">200+</div>
+                <p class="text-gray-600 dark:text-gray-300">Students Trained</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                <div class="text-3xl md:text-4xl font-bold text-orange-600 mb-2">98%</div>
+                <p class="text-gray-600 dark:text-gray-300">Satisfaction Rate</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Featured Testimonials Carousel -->
+<section class="py-16 bg-white dark:bg-gray-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Featured Reviews</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Detailed testimonials from my most valued clients and students.
+            </p>
+        </div>
+
+        <div class="relative">
+            <!-- Carousel Container -->
+            <div class="overflow-hidden rounded-lg">
+                <div class="flex transition-transform duration-500 ease-in-out" id="testimonial-carousel">
+                    {% for testimonial in carousel_testimonials %}
+                    <div class="w-full flex-shrink-0">
+                        {% if forloop.counter == 1 %}
+                        <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900 dark:to-purple-900 p-8 md:p-12 rounded-lg">
+                        {% elif forloop.counter == 2 %}
+                        <div class="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900 dark:to-blue-900 p-8 md:p-12 rounded-lg">
+                        {% else %}
+                        <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900 dark:to-pink-900 p-8 md:p-12 rounded-lg">
+                        {% endif %}
+                            <div class="text-center max-w-4xl mx-auto">
+                                <div class="flex justify-center mb-6">
+                                    {% if testimonial.image %}
+                                    <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}" class="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover">
+                                    {% else %}
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="{{ testimonial.name }}" class="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover">
+                                    {% endif %}
+                                </div>
+                                <blockquote class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 italic mb-6">
+                                    "{{ testimonial.message }}"
+                                </blockquote>
+                                <div class="flex justify-center mb-4">
+                                    {% for i in "12345"|make_list %}
+                                    {% if forloop.counter <= testimonial.rating %}
+                                    <i class="fas fa-star text-yellow-400 text-xl"></i>
+                                    {% else %}
+                                    <i class="far fa-star text-yellow-400 text-xl"></i>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <cite class="text-gray-900 dark:text-white font-semibold text-lg">{{ testimonial.name }}</cite>
+                                <p class="text-gray-600 dark:text-gray-300">{{ testimonial.designation }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all" id="prev-testimonial">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all" id="next-testimonial">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- Indicators -->
+            <div class="flex justify-center mt-6 space-x-2">
+                {% for testimonial in carousel_testimonials %}
+                <button class="w-3 h-3 rounded-full {% if forloop.first %}bg-blue-600{% else %}bg-gray-300 dark:bg-gray-600{% endif %}" data-slide="{{ forloop.counter0 }}"></button>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video Testimonials Section (Placeholder) -->
+<section class="py-16 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Video Testimonials</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Hear directly from my clients about their experience working with me.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                <div class="aspect-video bg-gray-300 dark:bg-gray-700 flex items-center justify-center relative">
+                    <i class="fas fa-play-circle text-6xl text-gray-400 dark:text-gray-500"></i>
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer">
+                        <i class="fas fa-play text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">E-commerce Success Story</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Rajesh Sharma shares how the new platform increased their sales by 150%.</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                <div class="aspect-video bg-gray-300 dark:bg-gray-700 flex items-center justify-center relative">
+                    <i class="fas fa-play-circle text-6xl text-gray-400 dark:text-gray-500"></i>
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer">
+                        <i class="fas fa-play text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Student Success Journey</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">Priya's journey from beginner to employed developer in 6 months.</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                <div class="aspect-video bg-gray-300 dark:bg-gray-700 flex items-center justify-center relative">
+                    <i class="fas fa-play-circle text-6xl text-gray-400 dark:text-gray-500"></i>
+                    <div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer">
+                        <i class="fas fa-play text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Legacy System Modernization</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm">How Amit's company benefited from a complete system overhaul.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trust Indicators -->
+<section class="py-16 bg-white dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Trusted By</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Companies and individuals who trust me with their projects and training needs.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-building text-2xl text-gray-600 dark:text-gray-400"></i>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">Tech Solutions</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="150">
+                <div class="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-code text-2xl text-gray-600 dark:text-gray-400"></i>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">Code Academy</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-rocket text-2xl text-gray-600 dark:text-gray-400"></i>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">Digital Innovations</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="250">
+                <div class="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-graduation-cap text-2xl text-gray-600 dark:text-gray-400"></i>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">EduTech Institute</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                <div class="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-shopping-cart text-2xl text-gray-600 dark:text-gray-400"></i>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">E-commerce Plus</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="350">
+                <div class="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-users text-2xl text-gray-600 dark:text-gray-400"></i>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-300">StartupXYZ</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-16 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Join My Happy Clients</h2>
+        <p class="text-lg md:text-xl mb-8 text-gray-200">
+            Ready to experience the same level of service and quality that my clients rave about?
+            Let's start your project today.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'contact' %}" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors transform hover:scale-105">
+                <i class="fas fa-envelope mr-2"></i>Start Your Project
+            </a>
+            <a href="{% url 'services' %}" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors transform hover:scale-105">
+                <i class="fas fa-graduation-cap mr-2"></i>Join Training
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Testimonial Carousel
+    document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.getElementById('testimonial-carousel');
+        const prevBtn = document.getElementById('prev-testimonial');
+        const nextBtn = document.getElementById('next-testimonial');
+        const indicators = document.querySelectorAll('[data-slide]');
+
+        let currentSlide = 0;
+        const totalSlides = {{ carousel_testimonials|length }};
+
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.remove('bg-gray-300', 'dark:bg-gray-600');
+                    indicator.classList.add('bg-blue-600');
+                } else {
+                    indicator.classList.remove('bg-blue-600');
+                    indicator.classList.add('bg-gray-300', 'dark:bg-gray-600');
+                }
+            });
+        }
+
+        prevBtn.addEventListener('click', function() {
+            currentSlide = currentSlide > 0 ? currentSlide - 1 : totalSlides - 1;
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', function() {
+            currentSlide = currentSlide < totalSlides - 1 ? currentSlide + 1 : 0;
+            updateCarousel();
+        });
+
+        // Indicator clicks
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', function() {
+                currentSlide = index;
+                updateCarousel();
+            });
+        });
+
+        // Auto-play (optional)
+        setInterval(() => {
+            currentSlide = currentSlide < totalSlides - 1 ? currentSlide + 1 : 0;
+            updateCarousel();
+        }, 8000);
+    });
+</script>
+{% endblock %}

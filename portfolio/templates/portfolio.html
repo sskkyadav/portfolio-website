@@ -1,0 +1,282 @@
+{% extends 'base.html' %}
+
+{% block title %}Portfolio - Suresh Kumar Yadav{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">My Portfolio</h1>
+            <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+                A showcase of my work in web development, software solutions, and training projects.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Filter Section -->
+<section class="py-8 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up">
+            <button class="filter-btn active bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition-colors" data-filter="all">
+                All Projects
+            </button>
+            <button class="filter-btn bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-full font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" data-filter="web">
+                Web Development
+            </button>
+            <button class="filter-btn bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-full font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" data-filter="software">
+                Software
+            </button>
+            <button class="filter-btn bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-full font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" data-filter="training">
+                Training
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Grid -->
+<section class="py-16 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+            {% for project in projects %}
+            <div class="portfolio-item bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-category="{{ project.category.slug }}" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 100 %}">
+                <div class="relative overflow-hidden">
+                    <img src="{% if project.image %}{{ project.image.url }}{% else %}https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop{% endif %}" alt="{{ project.title }}" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div class="text-center">
+                            <a href="{{ project.demo_url|default:'#' }}" target="_blank" class="inline-block bg-white text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors mr-2">
+                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                            </a>
+                            {% if project.github_url %}
+                            <a href="{{ project.github_url }}" target="_blank" class="inline-block bg-gray-800 text-white px-4 py-2 rounded-lg font-semibold hover:bg-gray-900 transition-colors">
+                                <i class="fab fa-github mr-1"></i>Code
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-{{ project.category.slug }}-100 text-{{ project.category.slug }}-800 px-2 py-1 rounded text-xs font-semibold">
+                            {{ project.category.name }}
+                        </span>
+                        <span class="text-gray-500 dark:text-gray-400 text-sm">
+                            {{ project.created_at|date:"M Y" }}
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">{{ project.title }}</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">{{ project.description|truncatechars:100 }}</p>
+
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        {% for tag in project.tags %}
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-sm">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <a href="#project-modal" class="project-link inline-block text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-semibold" data-project-id="{{ project.id }}">
+                        View Details →
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-12" data-aos="fade-up">
+            <button id="load-more" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors">
+                Load More Projects
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Project Modal -->
+<div id="project-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-lg max-w-4xl w-full max-h-screen overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white" id="modal-title"></h3>
+                    <button id="close-modal" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div id="modal-content">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Section -->
+<section class="py-16 bg-white dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Project Statistics</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Numbers that reflect my dedication to quality and client satisfaction.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2">{{ projects|length }}</div>
+                <p class="text-gray-600 dark:text-gray-300">Total Projects</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-3xl md:text-4xl font-bold text-green-600 mb-2">{{ projects|length|add:10 }}</div>
+                <p class="text-gray-600 dark:text-gray-300">Happy Clients</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                <div class="text-3xl md:text-4xl font-bold text-purple-600 mb-2">500+</div>
+                <p class="text-gray-600 dark:text-gray-300">Hours of Coding</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                <div class="text-3xl md:text-4xl font-bold text-orange-600 mb-2">4.9/5</div>
+                <p class="text-gray-600 dark:text-gray-300">Client Rating</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technologies Section -->
+<section class="py-16 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Technologies I Use</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Modern tools and technologies to build robust, scalable solutions.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <i class="fab fa-python text-4xl text-blue-600 mb-2"></i>
+                <p class="text-gray-600 dark:text-gray-300">Python</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="150">
+                <i class="fab fa-js-square text-4xl text-yellow-500 mb-2"></i>
+                <p class="text-gray-600 dark:text-gray-300">JavaScript</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                <i class="fab fa-react text-4xl text-blue-400 mb-2"></i>
+                <p class="text-gray-600 dark:text-gray-300">React</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="250">
+                <i class="fab fa-html5 text-4xl text-red-500 mb-2"></i>
+                <p class="text-gray-600 dark:text-gray-300">HTML5</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                <i class="fab fa-css3-alt text-4xl text-blue-600 mb-2"></i>
+                <p class="text-gray-600 dark:text-gray-300">CSS3</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="350">
+                <i class="fab fa-node-js text-4xl text-green-600 mb-2"></i>
+                <p class="text-gray-600 dark:text-gray-300">Node.js</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-database text-4xl text-green-500 mb-2"></i>
+                <p class="text-gray-600 dark:text-gray-300">PostgreSQL</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="450">
+                <i class="fab fa-docker text-4xl text-blue-600 mb-2"></i>
+                <p class="text-gray-600 dark:text-gray-300">Docker</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="500">
+                <i class="fab fa-aws text-4xl text-orange-500 mb-2"></i>
+                <p class="text-gray-600 dark:text-gray-300">AWS</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="550">
+                <i class="fab fa-git-alt text-4xl text-red-600 mb-2"></i>
+                <p class="text-gray-600 dark:text-gray-300">Git</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="600">
+                <i class="fab fa-linux text-4xl text-gray-800 dark:text-gray-200 mb-2"></i>
+                <p class="text-gray-600 dark:text-gray-300">Linux</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Portfolio filtering
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const filterValue = this.getAttribute('data-filter');
+
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
+                filterButtons.forEach(btn => btn.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300'));
+                this.classList.add('active', 'bg-blue-600', 'text-white');
+                this.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+
+                // Filter items
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('project-modal');
+        const closeModal = document.getElementById('close-modal');
+        const projectLinks = document.querySelectorAll('.project-link');
+
+        projectLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const projectId = this.getAttribute('data-project-id');
+
+                // In a real application, you would fetch project details via AJAX
+                // For now, we'll show a placeholder
+                document.getElementById('modal-title').textContent = 'Project Details';
+                document.getElementById('modal-content').innerHTML = `
+                    <div class="text-center">
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Detailed project information would be loaded here via AJAX.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            This includes full description, technologies used, challenges faced, and solutions implemented.
+                        </p>
+                    </div>
+                `;
+
+                modal.classList.remove('hidden');
+            });
+        });
+
+        closeModal.addEventListener('click', function() {
+            modal.classList.add('hidden');
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+
+        // Load more functionality
+        const loadMoreBtn = document.getElementById('load-more');
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function() {
+                // In a real application, you would load more projects via AJAX
+                this.textContent = 'No More Projects';
+                this.disabled = true;
+                this.classList.add('opacity-50', 'cursor-not-allowed');
+            });
+        }
+    });
+</script>
+{% endblock %}

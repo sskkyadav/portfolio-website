@@ -1,0 +1,411 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Suresh Kumar Yadav - IT Trainer & Web Developer{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Professional IT Trainer and Web Developer with 5 years of experience. Specializing in Django, React, Python, and web development training.{% endblock %}">
+    <meta name="keywords" content="IT Trainer, Web Developer, Django, React, Python, Web Development, Training">
+    <meta name="author" content="Suresh Kumar Yadav">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{% block og_url %}{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}Suresh Kumar Yadav - IT Trainer & Web Developer{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Professional IT Trainer and Web Developer with 5 years of experience.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% endblock %}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{% block twitter_url %}{% endblock %}">
+    <meta property="twitter:title" content="{% block twitter_title %}Suresh Kumar Yadav - IT Trainer & Web Developer{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}Professional IT Trainer and Web Developer with 5 years of experience.{% endblock %}">
+    <meta property="twitter:image" content="{% block twitter_image %}{% endblock %}">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Dark mode */
+        .dark {
+            background-color: #1a202c;
+            color: #f7fafc;
+        }
+
+        .dark .bg-white {
+            background-color: #2d3748;
+            color: #f7fafc;
+        }
+
+        .dark .text-gray-900 {
+            color: #f7fafc;
+        }
+
+        .dark .text-gray-700 {
+            color: #e2e8f0;
+        }
+
+        /* Scroll to top button */
+        #scrollToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        #scrollToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Custom animations */
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Skill bars */
+        .skill-bar {
+            width: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #007bff, #00d4ff);
+            border-radius: 4px;
+            transition: width 2s ease;
+        }
+
+        .skill-bar.animate {
+            width: var(--skill-level);
+        }
+    </style>
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-lg sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="{% url 'home' %}" class="text-xl font-bold text-gray-900 dark:text-white">
+                        Suresh Kumar Yadav
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="{% url 'home' %}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
+                    <a href="{% url 'about' %}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                    <a href="{% url 'services' %}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Services</a>
+                    <a href="{% url 'portfolio' %}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Portfolio</a>
+                    <a href="{% url 'blog_list' %}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
+                    <a href="{% url 'contact' %}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+                    <a href="{% url 'faq' %}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">FAQ</a>
+
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="{% url 'home' %}" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Home</a>
+                <a href="{% url 'about' %}" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">About</a>
+                <a href="{% url 'services' %}" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Services</a>
+                <a href="{% url 'portfolio' %}" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Portfolio</a>
+                <a href="{% url 'blog_list' %}" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Blog</a>
+                <a href="{% url 'contact' %}" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
+                <a href="{% url 'faq' %}" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">FAQ</a>
+                <div class="pt-2 border-t border-gray-200 dark:border-gray-700 mt-2">
+                    <button id="mobile-theme-toggle" class="flex items-center py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                        <i class="fas fa-moon mr-2"></i>
+                        <span id="mobile-theme-text">Dark Mode</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Suresh Kumar Yadav</h3>
+                    <p class="text-gray-400 mb-4">
+                        Professional IT Trainer & Web Developer with 5 years of experience.
+                        Passionate about teaching and creating amazing web solutions.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://wa.me/919352471227" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/suresh-kumar-yadav-5b61092a6" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{% url 'home' %}" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="{% url 'about' %}" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="{% url 'services' %}" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="{% url 'portfolio' %}" class="text-gray-400 hover:text-white transition-colors">Portfolio</a></li>
+                        <li><a href="{% url 'blog_list' %}" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="{% url 'contact' %}" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{% url 'services' %}" class="text-gray-400 hover:text-white transition-colors">Web Development</a></li>
+                        <li><a href="{% url 'services' %}" class="text-gray-400 hover:text-white transition-colors">Custom Software</a></li>
+                        <li><a href="{% url 'services' %}" class="text-gray-400 hover:text-white transition-colors">IT Training</a></li>
+                        <li><a href="{% url 'services' %}" class="text-gray-400 hover:text-white transition-colors">Consultation</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <div class="space-y-2">
+                        <p class="text-gray-400">
+                            <i class="fas fa-envelope mr-2"></i>
+                            suresh@example.com
+                        </p>
+                        <p class="text-gray-400">
+                            <i class="fas fa-phone mr-2"></i>
+                            +91-9352471227
+                        </p>
+                        <p class="text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            India
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    &copy; 2024 Suresh Kumar Yadav. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="shadow-lg hover:shadow-xl transition-shadow">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- WhatsApp Chat Button -->
+    <a href="https://wa.me/919352471227" target="_blank" class="fixed bottom-20 right-4 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors z-50 animate-bounce">
+        <i class="fab fa-whatsapp text-xl"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+
+        // Preloader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('preloader').style.display = 'none';
+            }, 1000);
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        const mobileThemeText = document.getElementById('mobile-theme-text');
+        const html = document.documentElement;
+
+        // Function to update theme UI
+        function updateThemeUI(isDark) {
+            if (isDark) {
+                html.classList.add('dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                mobileThemeToggle.querySelector('i').className = 'fas fa-sun mr-2';
+                mobileThemeText.textContent = 'Light Mode';
+            } else {
+                html.classList.remove('dark');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                mobileThemeToggle.querySelector('i').className = 'fas fa-moon mr-2';
+                mobileThemeText.textContent = 'Dark Mode';
+            }
+        }
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        updateThemeUI(currentTheme === 'dark');
+
+        // Desktop theme toggle
+        themeToggle.addEventListener('click', function() {
+            const isDark = html.classList.contains('dark');
+            const newTheme = isDark ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            updateThemeUI(!isDark);
+        });
+
+        // Mobile theme toggle
+        mobileThemeToggle.addEventListener('click', function() {
+            const isDark = html.classList.contains('dark');
+            const newTheme = isDark ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme);
+            updateThemeUI(!isDark);
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Scroll to Top
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Skill Bar Animation
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-bar');
+            skillBars.forEach(bar => {
+                bar.classList.add('animate');
+            });
+        }
+
+        // Trigger skill bar animation when skills section is in view
+        const skillsSection = document.querySelector('#skills');
+        if (skillsSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateSkillBars();
+                    }
+                });
+            });
+            observer.observe(skillsSection);
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

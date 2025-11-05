@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+
+{% block title %}Services - Suresh Kumar Yadav{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">My Services</h1>
+            <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+                Comprehensive web development and IT training solutions tailored to your needs.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-16 bg-white dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {% for service in services %}
+            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 100 %}">
+                <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                    <i class="{{ service.icon }} text-6xl text-white"></i>
+                </div>
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">{{ service.title }}</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">{{ service.description }}</p>
+
+                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Working Process:</h4>
+                    <ul class="space-y-2 mb-6">
+                        {% for step in service.process_steps %}
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            {{ step }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+                    <a href="{% url 'contact' %}" class="block text-center bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Demo Projects Section -->
+<section class="py-16 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Demo Projects</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Explore some of the projects I've built to showcase my skills and expertise.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for demo in demo_projects %}
+            <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 100 %}">
+                <img src="{% if demo.image %}{{ demo.image.url }}{% else %}https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop{% endif %}" alt="{{ demo.title }}" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">{{ demo.title }}</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">{{ demo.description }}</p>
+
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        {% for tag in demo.tags %}
+                        <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded text-sm">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="flex space-x-2">
+                        {% if demo.demo_url %}
+                        <a href="{{ demo.demo_url }}" target="_blank" class="flex-1 text-center bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                            <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                        </a>
+                        {% endif %}
+                        {% if demo.github_url %}
+                        <a href="{{ demo.github_url }}" target="_blank" class="flex-1 text-center bg-gray-800 text-white py-2 px-4 rounded-lg font-semibold hover:bg-gray-900 transition-colors">
+                            <i class="fab fa-github mr-1"></i>Code
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="py-16 bg-white dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">How I Work</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                My systematic approach ensures quality results and smooth project delivery.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-search text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Discovery</h3>
+                <p class="text-gray-600 dark:text-gray-300">Understanding your requirements, goals, and target audience.</p>
+            </div>
+
+            <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-palette text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Design</h3>
+                <p class="text-gray-600 dark:text-gray-300">Creating wireframes, mockups, and user experience designs.</p>
+            </div>
+
+            <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-code text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Development</h3>
+                <p class="text-gray-600 dark:text-gray-300">Building robust, scalable solutions with clean, maintainable code.</p>
+            </div>
+
+            <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                <div class="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-rocket text-white text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Launch</h3>
+                <p class="text-gray-600 dark:text-gray-300">Testing, deployment, and ongoing support for your project.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="py-16 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Training Programs</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Comprehensive IT training programs designed for different skill levels.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-blue-600 text-white p-6 text-center">
+                    <h3 class="text-2xl font-bold">Beginner</h3>
+                    <p class="text-blue-100">Perfect for absolute beginners</p>
+                </div>
+                <div class="p-6">
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>HTML & CSS Fundamentals
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>Basic JavaScript
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>Introduction to Python
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>Basic Web Development
+                        </li>
+                    </ul>
+                    <div class="text-center mb-4">
+                        <span class="text-3xl font-bold text-gray-900 dark:text-white">₹15,000</span>
+                        <span class="text-gray-600 dark:text-gray-300">/ 3 months</span>
+                    </div>
+                    <a href="https://wa.me/919352471227" target="_blank" class="block text-center bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                        Join Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform scale-105" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-green-600 text-white p-6 text-center">
+                    <h3 class="text-2xl font-bold">Intermediate</h3>
+                    <p class="text-green-100">For those with basic knowledge</p>
+                    <span class="inline-block bg-yellow-400 text-black text-xs px-2 py-1 rounded-full mt-2">Most Popular</span>
+                </div>
+                <div class="p-6">
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>Advanced HTML & CSS
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>Django Web Framework
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>React.js Development
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>Database Design
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>API Development
+                        </li>
+                    </ul>
+                    <div class="text-center mb-4">
+                        <span class="text-3xl font-bold text-gray-900 dark:text-white">₹25,000</span>
+                        <span class="text-gray-600 dark:text-gray-300">/ 6 months</span>
+                    </div>
+                    <a href="https://wa.me/919352471227" target="_blank" class="block text-center bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                        Join Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-purple-600 text-white p-6 text-center">
+                    <h3 class="text-2xl font-bold">Advanced</h3>
+                    <p class="text-purple-100">For experienced developers</p>
+                </div>
+                <div class="p-6">
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>Full Stack Development
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>DevOps & Deployment
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>AI & Machine Learning
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>Ethical Hacking
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>Project Management
+                        </li>
+                    </ul>
+                    <div class="text-center mb-4">
+                        <span class="text-3xl font-bold text-gray-900 dark:text-white">₹40,000</span>
+                        <span class="text-gray-600 dark:text-gray-300">/ 12 months</span>
+                    </div>
+                    <a href="https://wa.me/919352471227" target="_blank" class="block text-center bg-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+                        Join Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-16 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Get Started?</h2>
+        <p class="text-lg md:text-xl mb-8 text-gray-200">
+            Let's discuss your project requirements and create something amazing together.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'contact' %}" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors transform hover:scale-105">
+                <i class="fas fa-envelope mr-2"></i>Contact Me
+            </a>
+            <a href="https://wa.me/919352471227" target="_blank" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors transform hover:scale-105">
+                <i class="fab fa-whatsapp mr-2"></i>WhatsApp Chat
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
