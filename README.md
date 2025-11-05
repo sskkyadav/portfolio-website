@@ -55,8 +55,17 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4. Run Migrations
+### 4. Database Setup
 ```bash
+# Option 1: Use existing database (includes sample data)
+# No action needed, database is included in repository
+
+# Option 2: Start fresh with sample data
+python manage.py flush  # Clear existing database
+python manage.py migrate  # Run migrations
+python manage.py loaddata fixtures/*.json  # Load sample data
+
+# Option 3: Start completely fresh
 python manage.py makemigrations
 python manage.py migrate
 ```
