@@ -29,6 +29,7 @@ def create_blog_posts():
         {
             'title': 'Getting Started with Django REST Framework',
             'slug': 'getting-started-django-rest-framework',
+            'image': '/static/images/suresh.jpg',
             'content': '''
 # Getting Started with Django REST Framework
 

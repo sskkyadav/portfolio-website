@@ -19,18 +19,18 @@
 <section class="py-8 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up">
-            <button class="filter-btn active bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition-colors" data-filter="all">
+            <a href="?category=all" class="filter-btn {% if current_category == 'all' %}active bg-blue-600 text-white{% else %}bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600{% endif %} px-6 py-2 rounded-full font-semibold transition-colors">
                 All Projects
-            </button>
-            <button class="filter-btn bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-full font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" data-filter="web">
+            </a>
+            <a href="?category=web" class="filter-btn {% if current_category == 'web' %}active bg-blue-600 text-white{% else %}bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600{% endif %} px-6 py-2 rounded-full font-semibold transition-colors">
                 Web Development
-            </button>
-            <button class="filter-btn bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-full font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" data-filter="software">
+            </a>
+            <a href="?category=software" class="filter-btn {% if current_category == 'software' %}active bg-blue-600 text-white{% else %}bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600{% endif %} px-6 py-2 rounded-full font-semibold transition-colors">
                 Software
-            </button>
-            <button class="filter-btn bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-full font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" data-filter="training">
+            </a>
+            <a href="?category=training" class="filter-btn {% if current_category == 'training' %}active bg-blue-600 text-white{% else %}bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600{% endif %} px-6 py-2 rounded-full font-semibold transition-colors">
                 Training
-            </button>
+            </a>
         </div>
     </div>
 </section>
@@ -203,33 +203,8 @@
 
 {% block extra_js %}
 <script>
-    // Portfolio filtering
+    // Modal functionality
     document.addEventListener('DOMContentLoaded', function() {
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const filterValue = this.getAttribute('data-filter');
-
-                // Update active button
-                filterButtons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
-                filterButtons.forEach(btn => btn.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300'));
-                this.classList.add('active', 'bg-blue-600', 'text-white');
-                this.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
-
-                // Filter items
-                portfolioItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Modal functionality
         const modal = document.getElementById('project-modal');
         const closeModal = document.getElementById('close-modal');
         const projectLinks = document.querySelectorAll('.project-link');
